@@ -1,0 +1,29 @@
+<div class="w-full">
+  <label 
+    *ngIf="label" 
+    [for]="id" 
+    class="block text-sm font-medium text-gray-700 mb-1"
+  >
+    {{ label }}
+    <span *ngIf="isRequired" class="text-red-500">*</span>
+  </label>
+  
+  <input
+    [id]="id"
+    [name]="name"
+    [type]="type"
+    [placeholder]="placeholder"
+    [required]="isRequired"
+    [disabled]="disabled"
+    [autocomplete]="autocomplete"
+    [class]="inputClasses"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+  />
+  
+  <div *ngIf="errorMessage" class="mt-1 text-sm text-red-600">
+    {{ errorMessage }}
+  </div>
+</div> 
