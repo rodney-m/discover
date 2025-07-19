@@ -19,6 +19,10 @@
           {
             "glob": "**/*",
             "input": "apps/listings-app/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "public"
           }
         ],
         "styles": ["apps/listings-app/src/styles.scss"]
