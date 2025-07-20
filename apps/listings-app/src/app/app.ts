@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcome } from './nx-welcome';
+import { ToastContainerComponent } from '@discover/shared';
 
 @Component({
-  imports: [ RouterModule],
+  imports: [ RouterModule, ToastContainerComponent],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',

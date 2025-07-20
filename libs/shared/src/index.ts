@@ -6,3 +6,6 @@ export * from './lib/components/checkbox/checkbox.component';
 export * from './lib/components/radio-group/radio-group.component';
 export * from './lib/components/toggle/toggle.component';
 export * from './lib/components/password-validator/password-validator.component';
+export * from './lib/components/toast/toast.component';
+export * from './lib/components/toast/toast-container.component';
+export * from './lib/services/toast.service';

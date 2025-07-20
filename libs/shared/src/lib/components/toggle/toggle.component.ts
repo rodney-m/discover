@@ -73,4 +73,21 @@ export class ToggleComponent implements ControlValueAccessor {
       default: return null;
     }
   }
+
+  getSliderPosition(): string {
+    if (this.options.length === 0) return '2px';
+    
+    const selectedIndex = this.options.findIndex(option => option.value === this.value);
+    if (selectedIndex === -1) return '2px';
+    
+    const optionWidth = 100 / this.options.length;
+    const leftPosition = (selectedIndex * optionWidth) + '%';
+    return `calc(${leftPosition} + 2px)`;
+  }
+
+  getSliderWidth(): string {
+    if (this.options.length === 0) return 'calc(50% - 2px)';
+    const optionWidth = 100 / this.options.length;
+    return `calc(${optionWidth}% - 2px)`;
+  }
 } 

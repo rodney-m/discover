@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { InputComponent, PasswordInputComponent, ButtonComponent, CheckboxComponent, ToggleComponent, ToggleOption, PasswordValidatorComponent } from '@discover/shared';
+import { InputComponent, PasswordInputComponent, ButtonComponent, CheckboxComponent, ToggleComponent, ToggleOption, PasswordValidatorComponent, ToastService } from '@discover/shared';
 import { AccountType, SignupRequest } from '../../models/auth.types';
+import { AuthService } from '../../services/auth.service';
 import { LucideAngularModule, AlertCircle, CheckCircle } from 'lucide-angular';
 
 @Component({
@@ -53,10 +54,12 @@ export class SignupComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private toastService: ToastService
   ) {
     this.signupForm = this.fb.group({
-      accountType: ['', [Validators.required]],
+      accountType: [AccountType.INDIVIDUAL, [Validators.required]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
@@ -95,17 +98,28 @@ export class SignupComponent {
       this.isLoading = true;
       
       const signupRequest: SignupRequest = {
-        ...this.signupForm.value
+        accountType: this.signupForm.value.accountType,
+        username: this.signupForm.value.username,
+        firstName: this.signupForm.value.firstName,
+        lastName: this.signupForm.value.lastName,
+        email: this.signupForm.value.email,
+        password: this.signupForm.value.password
       };
       
-      // Simulate API call
-      setTimeout(() => {
-        console.log('Signup request:', signupRequest);
-        this.isLoading = false;
-        
-        // Navigate to login or dashboard
-        this.router.navigate(['/auth/login']);
-      }, 2000);
+      this.authService.register(signupRequest).subscribe({
+        next: (response: string) => {
+          console.log('Registration successful:', response);
+          this.isLoading = false;
+          this.toastService.showSuccess('Account Created!', 'Your account has been successfully created. Please sign in.');
+          // Navigate to login page after successful registration
+          this.router.navigate(['/auth/login']);
+        },
+        error: (error: Error) => {
+          console.error('Registration failed:', error);
+          this.isLoading = false;
+          this.toastService.showError('Registration Failed', error.message || 'An error occurred during registration. Please try again.');
+        }
+      });
     }
   }
 } 
