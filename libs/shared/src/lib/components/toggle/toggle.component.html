@@ -1,0 +1,28 @@
+<div class="relative bg-gray-100 rounded-xl p-1 w-full">
+  <!-- Sliding background indicator -->
+  <div 
+    class="absolute top-1 bottom-1 bg-white rounded-lg shadow-sm border border-gray-200 transition-all duration-300 ease-out"
+    [style.width]="'calc(50% - 2px)'"
+    [style.left]="value === options[0].value ? '2px' : 'calc(50% + 2px)'"
+  ></div>
+  
+  <!-- Toggle options -->
+  <div class="relative flex w-full">
+    <button
+      *ngFor="let option of options; let i = index"
+      type="button"
+      (click)="selectOption(option.value)"
+      class="flex-1 flex items-center justify-center space-x-2 px-4 py-3 rounded-lg font-medium text-sm transition-all duration-300 relative z-10"
+      [class]="value === option.value ? 'text-primary' : 'text-gray-600 hover:text-gray-900'"
+    >
+      <!-- Lucide Icon -->
+      <i-lucide 
+        *ngIf="option.icon && getIconForOption(option.icon)"
+        [name]="getIconForOption(option.icon)" 
+        class="w-4 h-4"
+      ></i-lucide>
+      
+      <span class="font-medium">{{ option.label }}</span>
+    </button>
+  </div>
+</div> 

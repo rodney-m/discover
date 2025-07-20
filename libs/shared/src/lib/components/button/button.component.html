@@ -1,0 +1,13 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="buttonClasses"
+  (click)="onClick($event)"
+>
+  <i-lucide
+    *ngIf="loading"
+    [name]="Loader2" 
+    class="animate-spin -ml-1 mr-2 h-4 w-4"
+  ></i-lucide>
+  <ng-content></ng-content>
+</button> 

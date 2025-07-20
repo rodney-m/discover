@@ -1,0 +1,23 @@
+<div class="flex min-h-screen">
+  <!-- Content Area (Left) -->
+  <div class="flex-1 flex items-center justify-center p-8">
+    <div class="w-full max-w-md">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
+  <!-- Image Area (Right) -->
+  <div class="flex-1 image-container hidden lg:block rounded-l-3xl">
+    <!-- Background Image -->
+    <img 
+      [src]="selectedImage" 
+      [class.loaded]="imageLoaded"
+      class="background-image"
+      (load)="onImageLoad()"
+      alt="Authentication background"
+    />
+    
+    <!-- Gradient Overlay -->
+    <div class="image-overlay"></div>
+  </div>
+</div> 

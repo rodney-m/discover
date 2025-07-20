@@ -1,31 +1,31 @@
-@import "tailwindcss";
+@use "tailwindcss";
 
 :root {
-  --color-primary: #0365FC;
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #0365FC;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  --color-primary: #4152EF;
+  --color-primary-50: #f0f2ff;
+  --color-primary-100: #e1e5ff;
+  --color-primary-200: #c7ceff;
+  --color-primary-300: #a3adff;
+  --color-primary-400: #7a87ff;
+  --color-primary-500: #4152EF;
+  --color-primary-600: #3a47d6;
+  --color-primary-700: #2f3bb8;
+  --color-primary-800: #283096;
+  --color-primary-900: #232a7a;
+  --color-primary-950: #1a1f4d;
 }
 
 @theme {
-  --color-primary: #0365FC;
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #0365FC;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  --color-primary: #4152EF;
+  --color-primary-50: #f0f2ff;
+  --color-primary-100: #e1e5ff;
+  --color-primary-200: #c7ceff;
+  --color-primary-300: #a3adff;
+  --color-primary-400: #7a87ff;
+  --color-primary-500: #4152EF;
+  --color-primary-600: #3a47d6;
+  --color-primary-700: #2f3bb8;
+  --color-primary-800: #283096;
+  --color-primary-900: #232a7a;
+  --color-primary-950: #1a1f4d;
 }

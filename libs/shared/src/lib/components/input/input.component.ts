@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { CommonModule } from '@angular/common';
 
 const inputVariants = cva(
-  'min-w-0 flex-auto rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-primary sm:text-sm/6',
+  'w-full min-w-0 flex-auto rounded-xl bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-gray-400 sm:text-sm/6',
   {
     variants: {
       size: {
@@ -13,7 +13,7 @@ const inputVariants = cva(
         lg: 'px-4 py-2.5 text-lg'
       },
       variant: {
-        default: 'outline-gray-300 focus:outline-primary',
+        default: 'outline-gray-300 focus:outline-gray-400',
         error: 'outline-red-300 focus:outline-red-600',
         success: 'outline-green-300 focus:outline-green-600'
       }

@@ -1,0 +1,65 @@
+<div class="space-y-3">
+  <div 
+    *ngFor="let option of options" 
+    class="relative"
+  >
+    <input
+      type="radio"
+      [id]="option.value"
+      [value]="option.value"
+      [checked]="value === option.value"
+      (change)="onChange(option.value)"
+      class="sr-only"
+    />
+    <label
+      [for]="option.value"
+      class="flex cursor-pointer items-center justify-between rounded-xl border-2 p-4 transition-all duration-200 hover:border-gray-300"
+      [class]="value === option.value ? 'border-primary bg-primary/5' : 'border-gray-200 bg-white'"
+    >
+      <div class="flex items-center space-x-3">
+        <div 
+          class="flex h-5 w-5 items-center justify-center rounded-full border-2 transition-all duration-200"
+          [class]="value === option.value ? 'border-primary bg-primary' : 'border-gray-300'"
+        >
+          <div 
+            *ngIf="value === option.value"
+            class="h-2 w-2 rounded-full bg-white"
+          ></div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div 
+            *ngIf="option.icon"
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-600"
+            [class]="value === option.value ? 'bg-primary/10 text-primary' : ''"
+          >
+            <span class="text-lg">{{ option.icon }}</span>
+          </div>
+          <div>
+            <div 
+              class="font-medium"
+              [class]="value === option.value ? 'text-primary' : 'text-gray-900'"
+            >
+              {{ option.label }}
+            </div>
+            <div 
+              *ngIf="option.description"
+              class="text-sm"
+              [class]="value === option.value ? 'text-primary/70' : 'text-gray-500'"
+            >
+              {{ option.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div 
+        *ngIf="value === option.value"
+        class="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white"
+      >
+        <i-lucide 
+          [name]="Check" 
+          class="h-3 w-3"
+        ></i-lucide>
+      </div>
+    </label>
+  </div>
+</div> 

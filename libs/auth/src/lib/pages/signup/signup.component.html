@@ -1,0 +1,169 @@
+<div class="w-full max-w-md mx-auto">
+  <!-- Logo -->
+  <div class="text-center mb-8">
+    <img 
+      src="/logos/logo.png" 
+      alt="Discover Real Estate" 
+      class="h-12 mx-auto"
+    />
+  </div>
+
+  <!-- Header -->
+  <div class="text-left mb-10">
+    <h1 class="text-3xl font-bold text-gray-900 mb-3 uppercase">Create Your Account</h1>
+    <p class="text-gray-600">Join us to discover your perfect home</p>
+  </div>
+
+  <!-- Signup Form -->
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Account Type Selection -->
+    <div class="space-y-2 mb-6">
+      <label class="block text-sm font-medium text-gray-700">Account Type *</label>
+      <discover-toggle
+        formControlName="accountType"
+        [options]="accountTypeOptions"
+      />
+      <div 
+        *ngIf="signupForm.get('accountType')?.invalid && signupForm.get('accountType')?.touched"
+        class="text-sm text-red-600"
+      >
+        Please select an account type
+      </div>
+    </div>
+
+    <!-- Username Field -->
+    <div class="mb-6">
+      <discover-input
+        label="Username"
+        formControlName="username"
+        placeholder="Enter your username"
+        [isRequired]="true"
+        id="username"
+        autocomplete="username"
+      />
+    </div>
+
+    <!-- First Name Field -->
+    <div class="mb-6">
+      <discover-input
+        label="First Name"
+        formControlName="firstName"
+        placeholder="Enter your first name"
+        [isRequired]="true"
+        id="firstName"
+        autocomplete="given-name"
+      />
+    </div>
+
+    <!-- Last Name Field -->
+    <div class="mb-6">
+      <discover-input
+        label="Last Name"
+        formControlName="lastName"
+        placeholder="Enter your last name"
+        [isRequired]="true"
+        id="lastName"
+        autocomplete="family-name"
+      />
+    </div>
+
+    <!-- Email Field -->
+    <div class="mb-6">
+      <discover-input
+        label="Email address"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        [isRequired]="true"
+        id="email"
+        autocomplete="email"
+      />
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-6">
+      <discover-password-input
+        label="Password"
+        formControlName="password"
+        placeholder="min 8 chars"
+        [isRequired]="true"
+        id="password"
+        autocomplete="new-password"
+      />
+      <!-- Password Validator -->
+      <discover-password-validator
+        [password]="passwordValue"
+      />
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div class="mb-6">
+      <discover-password-input
+        label="Confirm Password"
+        formControlName="confirmPassword"
+        placeholder="Confirm your password"
+        [isRequired]="true"
+        id="confirmPassword"
+        autocomplete="new-password"
+      />
+      <!-- Password Match Validation -->
+      <div 
+        *ngIf="confirmPasswordValue && !passwordsMatch"
+        class="mt-2 text-sm text-red-600 flex items-center space-x-1"
+      >
+        <i-lucide 
+          [name]="AlertCircle" 
+          class="w-4 h-4"
+        ></i-lucide>
+        <span>Passwords do not match</span>
+      </div>
+      <div 
+        *ngIf="confirmPasswordValue && passwordsMatch"
+        class="mt-2 text-sm text-green-600 flex items-center space-x-1"
+      >
+        <i-lucide 
+          [name]="CheckCircle" 
+          class="w-4 h-4"
+        ></i-lucide>
+        <span>Passwords match</span>
+      </div>
+    </div>
+
+    <!-- Terms & Privacy Checkbox -->
+    <div class="mb-6">
+      <discover-checkbox
+        formControlName="agreeToTerms"
+        id="terms"
+      >
+        I accept the 
+        <a href="#" class="text-primary hover:underline font-medium">Terms & Conditions</a>
+      </discover-checkbox>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mb-6">
+      <discover-button
+        type="submit"
+        [disabled]="signupForm.invalid || !passwordsMatch"
+        [loading]="isLoading"
+        size="lg"
+        class="w-full"
+      >
+        {{ isLoading ? 'Creating Account...' : 'Sign Up' }}
+      </discover-button>
+    </div>
+  </form>
+
+  <!-- Sign In Link -->
+  <div class="text-center mt-8">
+    <p class="text-gray-600">
+      Have an account? 
+      <a 
+        routerLink="/auth/login" 
+        class="text-primary hover:underline font-medium"
+      >
+        Sign in
+      </a>
+    </p>
+  </div>
+</div> 
